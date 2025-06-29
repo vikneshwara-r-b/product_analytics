@@ -50,6 +50,13 @@ WITH ranked_orders AS (
         ) as rn
         
     FROM {{ source('bronze','orders_cdc') }}
+    {% if is_incremental() %}
+        -- Only process new or updated records since last run
+        WHERE _cdc_timestamp > (
+            SELECT COALESCE(MAX(last_updated_at), "{{ var('ingest_batch_date') }}"::timestamp) 
+            FROM {{ this }}
+        )
+    {% endif %}
 ),
 
 latest_orders AS (
@@ -349,7 +356,7 @@ final_orders AS (
                 )
             END as first_seen_at,
         {%- else -%}
-            _cdc_timestamp as first_seen_at,  
+            o._cdc_timestamp as first_seen_at,  
         {%- endif -%}
         
         o._cdc_timestamp as last_updated_at,
@@ -367,10 +374,3 @@ final_orders AS (
 )
 
 SELECT * FROM final_orders
-{% if is_incremental() %}
-        -- Only process new or updated records since last run
-        WHERE _cdc_timestamp > (
-            SELECT COALESCE(MAX(last_updated_at), "{{ var('ingest_batch_date') }}" ::timestamp) 
-            FROM {{ this }}
-        )
-{% endif %}
