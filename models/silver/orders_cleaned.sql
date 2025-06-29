@@ -370,7 +370,7 @@ SELECT * FROM final_orders
 {% if is_incremental() %}
         -- Only process new or updated records since last run
         WHERE _cdc_timestamp > (
-            SELECT COALESCE(MAX(last_updated_at), var('ingest_batch_date') ::timestamp) 
+            SELECT COALESCE(MAX(last_updated_at), "{{ var('ingest_batch_date') }}" ::timestamp) 
             FROM {{ this }}
         )
 {% endif %}

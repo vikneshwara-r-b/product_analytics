@@ -42,7 +42,7 @@ WITH ranked_customers AS (
     WHERE
         _cdc_timestamp > (
             SELECT
-                COALESCE(MAX(last_updated_at), var('ingest_batch_date') :: timestamp)
+                COALESCE(MAX(last_updated_at), "{{ var('ingest_batch_date') }}" :: timestamp)
             FROM
                 {{ this }}
         ) 
