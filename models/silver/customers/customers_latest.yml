@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: customers_latest
+    description: Latest snapshot of Customers data
+    columns:
+      - name: customer_id
+        description: The primary key
+      - name: email
+        description: Email ID of the customer
+      - name: first_name
+        description: First name of the customer
+      - name: last_name
+        description: Last name of the customer
+      - name: full_name
+        description: Full name of the customer
+      - name: phone
+        description: Full number of the customer
+      - name: address_line1
+        description: Address Line 1 of the customer
+      - name: address_line2
+        description: Address Line 2 of the customer
+      - name: city
+        description: City of the customer
+      - name: state
+        description: State of the customer
+      - name: country
+        description: Country where the customer resides
+      - name: postal_code
+        description: Postal code of the customer residence
+      - name: registration_date
+        description: Registration date of the customer
+      - name: customer_status
+        description: Check whether the customer is ACTIVE, INACTIVE or SUSPENDED
+      - name: customer_segment
+        description: Check whether the customer is VIP, REGULAR or NEW
+      - name: is_email_valid
+        description: Based on a set of attributes, check if email is valid
+      - name: is_phone_valid
+        description: Check if the customer phone number is valid
+      - name: is_address_complete
+        description: Check if the address is completed
+      - name: first_seen_at
+      - name: last_updated_at 
+      - name: is_deleted

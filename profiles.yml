@@ -1,0 +1,11 @@
+product_analytics:
+  outputs:
+    dev:
+      catalog: dev
+      host: "{{ env_var('DBT_ENV_SECRET_HOST') }}"
+      http_path: "{{ env_var('DBT_ENV_SECRET_HTTP_PATH') }}"
+      schema: product_analytics_default_schema
+      threads: 5
+      token: "{{ env_var('DBT_ENV_SECRET_TOKEN') }}"
+      type: databricks
+  target: dev

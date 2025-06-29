@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: orders_cleaned
+    description: Cleaned orders data
+    config:
+      tags: ['feed_customers']

@@ -1,0 +1,85 @@
+version: 2
+
+sources:
+  - name: bronze
+    tags:
+      - 'bronze'
+    tables:
+      - name: customers_cdc
+        columns:
+          - name: _batch_id
+          - name: _cdc_operation
+          - name: _cdc_timestamp
+          - name: _ingested_at
+          - name: _source_system
+          - name: address_line1
+          - name: address_line2
+          - name: city
+          - name: country
+          - name: customer_id
+          - name: customer_segment
+          - name: customer_status
+          - name: email
+          - name: first_name
+          - name: last_name
+          - name: phone
+          - name: postal_code
+          - name: registration_date
+          - name: state
+      - name: order_line_items_cdc
+        columns: 
+          - name: _batch_id
+          - name: _cdc_operation
+          - name: _cdc_timestamp
+          - name: _ingested_at
+          - name: _source_system
+          - name: discount_amount
+          - name: line_total
+          - name: order_id
+          - name: order_line_id
+          - name: product_id
+          - name: quantity
+          - name: unit_price
+      - name: orders_cdc
+        columns:
+          - name: _batch_id
+          - name: _cdc_operation
+          - name: _cdc_timestamp
+          - name: _ingested_at
+          - name: _source_system
+          - name: actual_delivery_date
+          - name: customer_id
+          - name: discount_amount
+          - name: estimated_delivery_date
+          - name: order_date
+          - name: order_id
+          - name: order_status
+          - name: order_total
+          - name: payment_method
+          - name: payment_status
+          - name: region
+          - name: shipping_address_line1
+          - name: shipping_address_line2
+          - name: shipping_city
+          - name: shipping_cost
+      - name: products_cdc
+        columns:
+          - name: _batch_id
+          - name: _cdc_operation
+          - name: _cdc_timestamp
+          - name: _ingested_at
+          - name: _source_system
+          - name: brand
+          - name: category
+          - name: cost_price
+          - name: created_date
+          - name: dimensions_cm
+          - name: last_updated
+          - name: product_description
+          - name: product_id
+          - name: product_name
+          - name: product_status
+          - name: subcategory
+          - name: supplier_id
+          - name: unit_price
+          - name: weight_kg
