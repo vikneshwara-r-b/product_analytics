@@ -126,7 +126,7 @@ transformed_customers AS (
                 ELSE COALESCE(
                     (
                         SELECT
-                            first_seen_at
+                            MAX(first_seen_at)
                         FROM
                             {{ this }}
                         WHERE

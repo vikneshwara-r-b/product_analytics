@@ -344,7 +344,7 @@ final_orders AS (
             CASE 
                 WHEN o._cdc_operation = 'INSERT' THEN o._cdc_timestamp
                 ELSE COALESCE(
-                    (SELECT first_seen_at FROM {{ this }} WHERE order_id = o.order_id),
+                    (SELECT MAX(first_seen_at) FROM {{ this }} WHERE order_id = o.order_id),
                     o._cdc_timestamp
                 )
             END as first_seen_at,
