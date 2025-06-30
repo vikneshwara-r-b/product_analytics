@@ -63,7 +63,8 @@ models:
       +schema: 'output_zone'
       +submission_method: all_purpose_cluster
       +create_notebook: False
-      +cluster_id:  '{{ env_var("DBT_CLUSTER_ID") }}'
+      +cluster_id:  '{{ env_var("DBT_ALL_PURPOSE_CLUSTER_ID") }}'
+      +databricks_compute: "File_Generator_Compute"
       bronze:
         +tags:
             - 'output-bronze'
