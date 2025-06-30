@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: demographic_complete_customers
+    config:
+      materialized: view
+      schema: output_zone
+      tags: feed_customers
+      file_name: demographically_strong_customers
+      output_path: file_output/demographic_complete_customers
+      data_output_container: output
+      data_output_file_ext: csv
+      mount_location: FileStore
