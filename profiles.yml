@@ -1,16 +1,19 @@
 product_analytics:
   outputs:
-    dev:
-      catalog: dev
+    serverless_cluster:
+      catalog: "{{ env_var('DBT_DATABRICKS_CATALOG_NAME') }}"
       host: "{{ env_var('DBT_ENV_SECRET_HOST') }}"
       http_path: "{{ env_var('DBT_ENV_SECRET_HTTP_PATH') }}"
-       ### New compute section
-      compute:
-        ### Name that you will use to refer to an alternate compute
-       File_Generator_Compute:
-          http_path: "{{ env_var('DBT_ALL_PURPOSE_CLUSTER_HTTP_PATH') }}" # Required of each alternate compute
       schema: product_analytics_default_schema
       threads: 5
       token: "{{ env_var('DBT_ENV_SECRET_TOKEN') }}"
       type: databricks
-  target: dev
+    all_purpose_cluster:
+      catalog: "{{ env_var('DBT_DATABRICKS_CATALOG_NAME') }}"
+      host: "{{ env_var('DBT_ENV_SECRET_HOST') }}"
+      http_path: "{{ env_var('DBT_ALL_PURPOSE_CLUSTER_HTTP_PATH') }}"
+      schema: product_analytics_default_schema
+      threads: 4
+      token: "{{ env_var('DBT_ENV_SECRET_TOKEN') }}"
+      type: databricks
+  target: serverless_cluster
