@@ -36,8 +36,6 @@ models:
   
   product_analytics:
     +file_format: delta
-    +table_properties:
-      delta.enableDeletionVectors: false
     +materialized: incremental
     +incremental_strategy: 'append'
     
